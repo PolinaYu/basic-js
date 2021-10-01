@@ -16,7 +16,11 @@ import { NotImplementedError } from '../extensions/index.js';
 export default function createDreamTeam(members) {
   let teamName =[];
   for(let member of members){
-    if(typeof members==='string') teamName.push(member[0].toUpperCase);
+    if(typeof members==='string'){
+      member = member.trim();
+      teamName.push(member[0].toUpperCase);
+
+    } 
   }
   if(teamName.length==0) return false;
   teamName.sort();
