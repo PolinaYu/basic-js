@@ -24,5 +24,5 @@ export default function createDreamTeam(members) {
   }
   if(teamName.length==0) return false;
   teamName.sort();
-  return teamName.join();
+  return teamName.join('');
 }
