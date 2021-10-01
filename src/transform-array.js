@@ -13,7 +13,31 @@ import { NotImplementedError } from '../extensions/index.js';
  * transform([1, 2, 3, '--discard-prev', 4, 5]) => [1, 2, 4, 5]
  * 
  */
-export default function transform(/* arr */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+export default function transform( arr ) {
+  if (!(arr instanceof Array)) throw new Error("'arr' parameter must be an instance of the Array! ");
+  let tarr = [];
+  for( let i=0; i<arr.length(); i++){
+    if(arr[i] instanceof Number) tarr.push(arr[i]);
+    else{
+      switch(arr[i]){
+        case '--discard-next':
+          if(i==arr.length()) break;
+          i++;
+          break;
+        case '--discard-prev':
+          if(i==0) break;
+          tarr.pop;
+          break;
+        case '--double-next':
+          if(i==arr.length()) break;
+          tarr.push(arr[i+1]*2);
+          i++;
+          break;
+        case '--double-prev':
+          if(i==0) break;
+          tarr[i-1]+=tarr[i-1];
+          break;
+      }
+    }
+  }
 }
