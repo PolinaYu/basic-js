@@ -14,7 +14,9 @@ import { NotImplementedError } from '../extensions/index.js';
 export default function getCommonCharacterCount( s1, s2 ) {
   let common=0;
   for(let char of s1){
-    if (~s2.indexOf(char)) {
+    let pos = s2.indexOf(char);
+    if(pos!=-1){
+      s2 = s2.slice(0, pos) + s2.slice(pos + 1);
       common++;
     }
   }
