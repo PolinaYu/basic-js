@@ -14,30 +14,30 @@ import { NotImplementedError } from '../extensions/index.js';
  * 
  */
 export default function transform( arr ) {
-  if (!(arr instanceof Array)) throw new Error("'arr' parameter must be an instance of the Array! ");
+  if (!Array.isArray(arr)) throw new Error(`'arr' parameter must be an instance of the Array! `);
   let tarr = [];
-  for( let i=0; i<arr.length(); i++){
-    if(arr[i] instanceof Number) tarr.push(arr[i]);
+  for ( let i = 0; i < arr.length(); i++){
+    if (arr[i] instanceof Number) tarr.push(arr[i]);
     else{
-      switch(arr[i]){
+      switch (arr[i]){
         case '--discard-next':
-          if(i==arr.length()) break;
           i++;
           break;
         case '--discard-prev':
-          if(i==0) break;
-          tarr.pop;
+          if(i!==0||arr[i - 2] !== '--discard-next')
+            tarr.pop;
           break;
         case '--double-next':
-          if(i==arr.length()) break;
-          tarr.push(arr[i+1]*2);
-          i++;
+          if(arr[i + 1] !== undefined){
+            tarr.push(arr[i+1]);
+          }
           break;
         case '--double-prev':
-          if(i==0) break;
-          tarr[i-1]+=tarr[i-1];
+          if(arr[i - 1] !== undefined && arr[i - 2] !== '--discard-next')
+            tarr.push(arr[i]);
           break;
       }
     }
   }
+  return tarr;
 }
