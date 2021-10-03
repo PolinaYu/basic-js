@@ -14,6 +14,7 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function createDreamTeam(members) {
+  if (!Array.isArray(names)) return false
   let teamName =[];
   for(let member of members){
     if(typeof members==='string'){
@@ -23,6 +24,6 @@ export default function createDreamTeam(members) {
     } 
   }
   if(teamName.length==0) return false;
-  teamName.sort();
+  teamName.sort((a, b) => a.localeCompare(b));
   return teamName.join('');
 }
