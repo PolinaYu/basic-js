@@ -28,14 +28,14 @@ export default function minesweeper ( matrix ) {
   let count = 0;
   for(let i = 0; i < matrix.length; i++){
     for(let j = 0; j < matrix[i].length; j++){
-      if(typeof matrix[i-1][j] != 'undefined'&& matrix[i-1][j])count++
-      if(typeof matrix[i][j-1] != 'undefined' && matrix[i][j-1])count++
-      if(typeof matrix[i+1][j] != 'undefined' && matrix[i+1][j]) count++
-      if(typeof matrix[i][j+1] != 'undefined' && matrix[i][j+1]) count++
-      if(typeof matrix[i+1][j-1] != 'undefined' && matrix[i+1][j-1]) count++
-      if(typeof matrix[i+1][j+1] != 'undefined' && matrix[i+1][j+1]) count++
-      if(typeof matrix[i-1][j+1] != 'undefined' && matrix[i-1][j+1]) count++
-      if(typeof matrix[i-1][j-1] != 'undefined' && matrix[i-1][j-1]) count++
+      if(typeof matrix[i-1][j] !== 'undefined'&& matrix[i-1][j])count++
+      if(typeof matrix[i][j-1] !== 'undefined' && matrix[i][j-1])count++
+      if(typeof matrix[i+1][j] !== 'undefined' && matrix[i+1][j]) count++
+      if(typeof matrix[i][j+1] !== 'undefined' && matrix[i][j+1]) count++
+      if(typeof matrix[i+1][j-1] !== 'undefined' && matrix[i+1][j-1]) count++
+      if(typeof matrix[i+1][j+1] !== 'undefined' && matrix[i+1][j+1]) count++
+      if(typeof matrix[i-1][j+1] !== 'undefined' && matrix[i-1][j+1]) count++
+      if(typeof matrix[i-1][j-1] !== 'undefined' && matrix[i-1][j-1]) count++
       result[i][j] = count;
     }
   }
