@@ -20,17 +20,19 @@ export default function repeater(str, options ) {
     repeatTimes = 1,
     separator = '+',
     addition = '',
-    additionRepeatTimes = 0,
-    additionSeperator ='|'
+    additionRepeatTimes = 1,
+    additionSeparator ='|'
   } = options
-  let result = '';
-    for(let i = 0; i < repeatTimes; i++){
-      if(i == 0) result = str;
-      else result += separator + str;
-    for(let j = 0; j < additionRepeatTimes; j++){
-      if(j == 0) result += addition;
-      else result += additionSeperator + addition;
-    }
+  let result = String(str);
+  let additional ='';
+  for(let j = 0; j < additionRepeatTimes; j++){
+    if(j == 0) additional += addition;
+    else additional += additionSeparator + addition;
+  }
+  for(let i = 0; i < repeatTimes; i++){
+    if(i == 0) result = str;
+    else result += separator + str;
+  
   }
   return result;
 }
