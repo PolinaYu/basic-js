@@ -18,7 +18,7 @@ export default {
     if (!value){
       this.chain.push('( )');
     } else {
-      this.chain.push(`( ${value} )`);
+      this.chain.push(`(${value})`);
     }
     return this;
   },

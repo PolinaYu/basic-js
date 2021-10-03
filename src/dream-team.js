@@ -14,17 +14,8 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function createDreamTeam(members) {
-  if (!Array.isArray(names)) return false
-  let teamName =[];
-  members = members.sort();
-  for(let member of members){
-    if(typeof member === 'string'){
-      member = member.trim();
-      teamName.push(member[0].toUpperCase);
-
-    } 
-  }
-  if(teamName.length==0) return false;
-  teamName.sort((a, b) => a.localeCompare(b));
-  return teamName.join('');
+  if (!Array.isArray(members)) return false
+  return members.filter(item => {
+    if (item && typeof item === 'string') return item
+  }).map(name => name.trim()[0].toUpperCase()).sort().join('')
 }
