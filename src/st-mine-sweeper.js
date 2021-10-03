@@ -24,21 +24,42 @@ import { NotImplementedError } from '../extensions/index.js';
  * ]
  */
 export default function minesweeper ( matrix ) {
-  let result;
-  let count = 0;
-  for(let i = 0; i < matrix.length; i++){
-    for(let j = 0; j < matrix[i].length; j++){
-      if(typeof matrix[i-1][j] !== 'undefined'&& matrix[i-1][j])count++
-      if(typeof matrix[i][j-1] !== 'undefined' && matrix[i][j-1])count++
-      if(typeof matrix[i+1][j] !== 'undefined' && matrix[i+1][j]) count++
-      if(typeof matrix[i][j+1] !== 'undefined' && matrix[i][j+1]) count++
-      if(typeof matrix[i+1][j-1] !== 'undefined' && matrix[i+1][j-1]) count++
-      if(typeof matrix[i+1][j+1] !== 'undefined' && matrix[i+1][j+1]) count++
-      if(typeof matrix[i-1][j+1] !== 'undefined' && matrix[i-1][j+1]) count++
-      if(typeof matrix[i-1][j-1] !== 'undefined' && matrix[i-1][j-1]) count++
-      result[i][j] = count;
+  let result = [];
+  for (let i = 0; i < matrix.length; i++) {
+    result[i] = matrix[i].slice();
+  }
+  for (let i = 0; i < result.length; i++) {
+    for (let j = 0; j < result[i].length; j++) {
+      result[i][j] = 0;
+      if (typeof matrix[i - 1] !== 'undefined') {
+        if (matrix[i - 1][j - 1] === true) {
+          result[i][j]++;
+        }
+        if (matrix[i - 1][j] === true) {
+          result[i][j]++;
+        }
+        if (matrix[i - 1][j + 1] === true) {
+          result[i][j]++;
+        }
+      }
+      if (matrix[i][j - 1] === true) {
+        result[i][j]++;
+      }
+      if (matrix[i][j + 1] === true) {
+        result[i][j]++;
+      }
+      if (typeof matrix[i + 1] !== 'undefined') {
+        if (matrix[i + 1][j - 1] === true) {
+          result[i][j]++;
+        }
+        if (matrix[i + 1][j] === true) {
+          result[i][j]++;
+        }
+        if (matrix[i + 1][j + 1] === true) {
+          result[i][j]++;
+        }
+      }
     }
   }
-
   return result;
 }
