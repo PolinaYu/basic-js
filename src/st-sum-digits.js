@@ -13,11 +13,12 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function getSumOfDigits( n ) {
-  let i = 10;
+  if (n < 10) return n;
+
   let sum = 0;
-  while(n % i!=0){
-    sum += n % i;
-    n = Math.trunc(n/i);
+  n = '' + n;
+  for(let i = 0; i < n.length; i++) {
+    sum = sum + (+n[i])
   }
-  return sum;
+  return getSumOfDigits(sum)
 }
