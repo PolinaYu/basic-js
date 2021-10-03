@@ -30,5 +30,5 @@ export default function repeater(str, options ) {
       result+=addition + additionSeperator;
     }
   }
-
+  return result;
 }
