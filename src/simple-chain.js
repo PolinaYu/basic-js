@@ -10,8 +10,10 @@ export default {
   return this.chain.length; 
   },
   addLink( value ) {
-    this.chain.push('(' + (String(value)) + ')');
-    return this; 
+    if(String(value)){
+      this.chain.push('(' + (String(value)) + ')');
+      return this; 
+      }
     },
   removeLink(position ) {
     if( typeof position !== 'number' || position > this.chain.length || position < 1){
