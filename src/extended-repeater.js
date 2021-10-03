@@ -20,7 +20,7 @@ export default function repeater(str, options ) {
     repeatTimes,
     separator = '+',
     addition = '',
-    additionRepeatTimes=1,
+    additionRepeatTimes = 0,
     additionSeperator ='|'
   } = options
   let result = String(str);
