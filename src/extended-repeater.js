@@ -17,17 +17,19 @@ import { NotImplementedError } from '../extensions/index.js';
  */
 export default function repeater(str, options ) {
   let{
-    repeatTimes,
+    repeatTimes = 1,
     separator = '+',
     addition = '',
     additionRepeatTimes = 0,
     additionSeperator ='|'
   } = options
-  let result = String(str);
-  for(let i = 0; i < repeatTimes; i++){
-    result+=separator+str;
+  let result = '';
+    for(let i = 0; i < repeatTimes; i++){
+      if(i == 0) result = str;
+      else result += separator + str;
     for(let j = 0; j < additionRepeatTimes; j++){
-      result+=addition + additionSeperator;
+      if(j == 0) result += addition;
+      else result += additionSeperator + addition;
     }
   }
   return result;
